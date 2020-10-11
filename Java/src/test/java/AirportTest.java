@@ -55,9 +55,9 @@ public class AirportTest {
     @Test
     public void testExperimentalPlanesHasClassificationLevelHigherThanUnclassified(){
         Airport airport = new Airport(planes);
-        List<Plane> ExperimentalPlanes = airport.getPlanesByType("ExperimentalPlanes");
-        for(Plane experimentalPlane : ExperimentalPlanes){
-            Assert.assertTrue(((ExperimentalPlane) experimentalPlane).getClassificationLevel() != ClassificationLevel.UNCLASSIFIED);
+        List<ExperimentalPlane> experimentalPlanes = airport.getPlanesByType(ExperimentalPlane.class);
+        for(ExperimentalPlane experimentalPlane : experimentalPlanes){
+            Assert.assertTrue( experimentalPlane.getClassificationLevel() != ClassificationLevel.UNCLASSIFIED);
         }
     }
 }
