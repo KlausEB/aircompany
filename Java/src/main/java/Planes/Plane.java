@@ -1,8 +1,10 @@
 package Planes;
 
+
+import java.util.Comparator;
 import java.util.Objects;
 
-abstract public class Plane {
+abstract public class Plane{
     String model;
     private int maxSpeed;
     private int maxFlightDistance;
@@ -27,7 +29,7 @@ abstract public class Plane {
         return maxFlightDistance;
     }
 
-    public int getMinLoadCapacity() {
+    public int getMaxLoadCapacity() {
         int result = this.maxLoadCapacity;
         return result;
     }
@@ -57,5 +59,32 @@ abstract public class Plane {
     @Override
     public int hashCode() {
         return Objects.hash(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
+    }
+
+    public static Comparator<Plane> getAttributeMaxSpeed(){
+        return new Comparator<Plane>() {
+            @Override
+            public int compare(Plane o1, Plane o2) {
+                return o1.getMaxSpeed() - o2.getMaxSpeed();
+            }
+        };
+    }
+
+    public static Comparator<Plane> getAttributeMaxFlightDistance(){
+        return new Comparator<Plane>() {
+            @Override
+            public int compare(Plane o1, Plane o2) {
+                return o1.getMaxFlightDistance() - o2.getMaxFlightDistance();
+            }
+        };
+    }
+
+    public static Comparator<Plane> getAttributeMaxLoadCapacity(){
+        return new Comparator<Plane>() {
+            @Override
+            public int compare(Plane o1, Plane o2) {
+                return o1.getMaxLoadCapacity() - o2.getMaxLoadCapacity();
+            }
+        };
     }
 }

@@ -9,7 +9,7 @@ import java.util.*;
 // made by Vitali Shulha
 // 4-Jan-2019
 
-public class Airport {
+public class Airport{
     private List<? extends Plane> planes;
 
     public <C extends Plane> List<C> getPlanesByType(Class<C> clazz) {
@@ -43,31 +43,20 @@ public class Airport {
         return transportMilitaryPlanes;
     }
 
+
     public Airport sortByMaxDistance() {
-        Collections.sort(planes, new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxFlightDistance() - o2.getMaxFlightDistance();
-            }
-        });
+        Collections.sort(planes, Plane.getAttributeMaxFlightDistance());
         return this;
     }
 
 
     public Airport sortByMaxSpeed() {
-        Collections.sort(planes, new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMaxSpeed() - o2.getMaxSpeed();
-            }
-        });
+        Collections.sort(planes, Plane.getAttributeMaxSpeed());
         return this;
     }
 
     public Airport sortByMaxLoadCapacity() {
-        Collections.sort(planes, new Comparator<Plane>() {
-            public int compare(Plane o1, Plane o2) {
-                return o1.getMinLoadCapacity() - o2.getMinLoadCapacity();
-            }
-        });
+        Collections.sort(planes, Plane.getAttributeMaxLoadCapacity());
         return this;
     }
 
