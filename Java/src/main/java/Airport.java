@@ -13,13 +13,13 @@ public class Airport{
     private List<? extends Plane> planes;
 
     public <C extends Plane> List<C> getPlanesByType(Class<C> clazz) {
-        List<C> planesType = new ArrayList<>();
+        List<C> planesByType = new ArrayList<>();
         for (Plane p: planes) {
             if (p.getClass().equals(clazz)) {
-                planesType.add((C) p);
+                planesByType.add((C) p);
             }
         }
-        return planesType;
+        return planesByType;
     }
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
         List<PassengerPlane> passengerPlanes = getPlanesByType(PassengerPlane.class);
