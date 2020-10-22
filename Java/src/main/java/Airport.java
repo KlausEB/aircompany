@@ -7,6 +7,7 @@ import java.util.*;
 
 /**
  * @author
+ * @
  */
 
 public class Airport{
@@ -45,16 +46,16 @@ public class Airport{
 
 
     public void sortByMaxDistance() {
-        Collections.sort(planes, Plane.getAttributeMaxFlightDistance());
+        planes.sort(Plane.getAttributeMaxFlightDistance());
     }
 
 
     public void sortByMaxSpeed() {
-        Collections.sort(planes, Plane.getAttributeMaxSpeed());
+        planes.sort(Plane.getAttributeMaxSpeed());
     }
 
     public void sortByMaxLoadCapacity() {
-        Collections.sort(planes, Plane.getAttributeMaxLoadCapacity());
+        planes.sort(Plane.getAttributeMaxLoadCapacity());
     }
 
     public List<? extends Plane> getPlanes() {
