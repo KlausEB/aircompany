@@ -5,12 +5,13 @@ import Planes.Plane;
 
 import java.util.*;
 
-// version: 1.1
-// made by Vitali Shulha
-// 4-Jan-2019
+/**
+ * @author
+ * @
+ */
 
 public class Airport{
-    private List<? extends Plane> planes;
+    private final List<? extends Plane> planes;
 
     public <C extends Plane> List<C> getPlanesByType(Class<C> clazz) {
         List<C> planesByType = new ArrayList<>();
@@ -24,9 +25,9 @@ public class Airport{
     public PassengerPlane getPassengerPlaneWithMaxPassengersCapacity() {
         List<PassengerPlane> passengerPlanes = getPlanesByType(PassengerPlane.class);
         PassengerPlane planeWithMaxCapacity = passengerPlanes.get(0);
-        for (int i = 0; i < passengerPlanes.size(); i++) {
-            if (passengerPlanes.get(i).getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
-                planeWithMaxCapacity = passengerPlanes.get(i);
+        for (PassengerPlane passengerPlane : passengerPlanes) {
+            if (passengerPlane.getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
+                planeWithMaxCapacity = passengerPlane;
             }
         }
         return planeWithMaxCapacity;
@@ -35,41 +36,30 @@ public class Airport{
     public List<MilitaryPlane> getMilitaryPlaneByType(MilitaryType militaryType){
         List<MilitaryPlane> transportMilitaryPlanes = new ArrayList<>();
         List<MilitaryPlane> militaryPlanes = getPlanesByType(MilitaryPlane.class);
-        for (int i = 0; i < militaryPlanes.size(); i++) {
-            if (militaryPlanes.get(i).getMilitaryType() == militaryType) {
-                transportMilitaryPlanes.add(militaryPlanes.get(i));
+        for (MilitaryPlane militaryPlane : militaryPlanes) {
+            if (militaryPlane.getMilitaryType() == militaryType) {
+                transportMilitaryPlanes.add(militaryPlane);
             }
         }
         return transportMilitaryPlanes;
     }
 
 
-    public Airport sortByMaxDistance() {
+    public void sortByMaxDistance() {
         Collections.sort(planes, Plane.getAttributeMaxFlightDistance());
-        return this;
     }
 
 
-    public Airport sortByMaxSpeed() {
+    public void sortByMaxSpeed() {
         Collections.sort(planes, Plane.getAttributeMaxSpeed());
-        return this;
     }
 
-    public Airport sortByMaxLoadCapacity() {
+    public void sortByMaxLoadCapacity() {
         Collections.sort(planes, Plane.getAttributeMaxLoadCapacity());
-        return this;
     }
 
     public List<? extends Plane> getPlanes() {
         return planes;
-    }
-
-    private void print(Collection<? extends Plane> collection) {
-        Iterator<? extends Plane> iterator = collection.iterator();
-        while (iterator.hasNext()) {
-            Plane plane = iterator.next();
-            System.out.println(plane);
-        }
     }
 
     @Override

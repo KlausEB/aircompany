@@ -31,8 +31,6 @@ public class AirportTest {
             new ExperimentalPlane("Ryan X-13 Vertijet", 560, 307, 500, ExperimentalTypes.VTOL, ClassificationLevel.TOP_SECRET)
     );
 
-    private static PassengerPlane planeWithMaxPassengerCapacity = new PassengerPlane("Boeing-747", 980, 16100, 70500, 242);
-
     @Test
     public void TestSortByMaxLoadCapacity() {
         Airport airport = new Airport(planes);
@@ -48,7 +46,7 @@ public class AirportTest {
         Airport airport = new Airport(planes);
         List<MilitaryPlane> bomberMilitaryPlanes = airport.getMilitaryPlaneByType(MilitaryType.BOMBER);
         for (MilitaryPlane militaryPlane : bomberMilitaryPlanes) {
-            Assert.assertTrue(militaryPlane.getMilitaryType() == MilitaryType.BOMBER);
+            Assert.assertSame(militaryPlane.getMilitaryType(),MilitaryType.BOMBER);
         }
     }
 
